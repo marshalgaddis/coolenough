@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
+        <style type="text/css">
+            html, body {
+                height: 100%;
+                width: 100%;
+            }
+            #header {
+                width: 100%;
+                background-color: #3773d0;
+                height: 42px;
+                z-index: 3;
+            }
+            .fa-star {
+                color: white;
+                z-index: 10;
+            }
+            #starcontainer {
+                width: auto;
+                margin: 5px 5px;
+                cursor: hand;
+                cursor: pointer;
+                float: left;
+                z-index: 10;                
+            }
+            nav {
+                padding:0px 0;
+                border-style: solid;
+                border-color: #3773d0;
+                margin-left: -5px;
+                margin-top: -1px;
+                position: relative;
+                z-index: 3;
+            }
+            nav ul {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+            }
+            nav a {
+                color:#3773d0;
+                text-decoration:none;
+                display:block;
+                line-height:40px;
+                padding:0 12px;
+                margin:0 12px;
+            }
+            ul.sub-menu {
+                display:none;
+            }   
+            #coolenough {
+                position: absolute;
+                top: 0; bottom: 0; right: 0; left: 0;
+                background-image: url(coolenough.gif);
+                background-size: cover;
+            }
+            #coolwrap{
+                width: 100%;
+                display: inline-block;
+                position: relative;
+            }
+            #coolwrap:after {
+                padding-top: 56.25%;
+                display: block;
+                content: '';
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div id="starcontainer">
+                <i id="star" class="fa fa-star fa-2x"></i></li>
+                <nav>
+                    <ul id="starmenu" class="dropdown">
+                        <ul class="sub-menu">
+                            <li><a href="#">Something Important</a></li>
+                            <li><a href="#">Something More Important</a></li>
+                            <li><a href="#">Something Most Important</a></li> 
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div> 
+        <div id="coolwrap">
+            <div id="coolenough"> </div> 
+        </div>
+    </body>
+    <footer>
+        <script type="text/javascript">
+            
+            $(document).ready(function() {
+                $( '#starcontainer' ).hover(
+                    function(){
+                        $("#starmenu").children('.sub-menu').slideDown(200);
+                        $("coolenough").slideUp(200);
+                    },
+                    function(){
+                        $("#starmenu").children('.sub-menu').slideUp(200);
+                        $("coolenough").slideDown(200);
+                    }
+                );
+            });
+            $("#starcontainer").rotate({ 
+                bind: { 
+                    mouseover : function() { 
+                        $("#star").rotate({animateTo:180})
+                    },
+                    mouseout : function() { 
+                        $("#star").rotate({animateTo:0})
+                    }
+                } 
+            });
+        </script>
+    </footer>
+</html>
